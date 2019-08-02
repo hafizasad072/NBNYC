@@ -1,0 +1,7 @@
+/* .col-md-6{
+    width: 50%
+} */
+div.form-group > label
+{
+    float: left;
+}
