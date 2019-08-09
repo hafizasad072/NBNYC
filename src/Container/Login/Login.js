@@ -2,27 +2,22 @@ import React, { Component } from 'react'
 import LoginLayout from '../../Layout/_LoginLayout'
 // import Aux from '../../hoc/Aux'
 // import  { Redirect } from 'react-router-dom'
-// import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
+import { connect } from 'react-redux';
 class Login extends Component {
   // Handle Form Submit
   onSubmitHandler = (e) => {
+    debugger
+    e.preventDefault();
     var email = this.getEmail.value;
     var password = this.getPassword.value;
     var loginModel = {
       Email: email,
       Password: password
     }
-    //this.props.dispatch({type:"Login_Post",data:loginModel});
-    //return <Redirect to='/' />
+    this.props.dispatch({type:"Login_Post",login:loginModel});
+    return this.props.history.push('/');
   }
-  // Handle Input Change
-  // handleinputChange = event => {
-  //   const { name, value } = event.target
-  //   var updateuser = { ...this.state.user };
-  //   updateuser[name] = value;
-  //   this.setState({ user: updateuser });
-  // }
-
 
   render() {
     return (
@@ -37,7 +32,7 @@ class Login extends Component {
             <label htmlFor="login-Password">Password</label>
             <input type='password' id='login-Password' name='password' ref={(input) => { this.getPassword = input }} className="form-control" placeholder='Password' />
           </div>
-          <button className="btn btn-pill btn-primary d-table mx-auto" type="submit">Access Account</button>
+          <button className="btn btn-pill btn-primary d-table mx-auto" onClick={this.onSubmitHandler}>Access Account</button>
         </form>
       </LoginLayout>
 
@@ -45,4 +40,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default withRouter(connect()(Login))

@@ -1,9 +1,11 @@
 import Rlogin from './RLogin'
 import RPost from './RPost'
+import RTForm from './RTForm'
 import { combineReducers } from 'redux'
 export default combineReducers({
-  Rlogin,
-  RPost
+  RTForm,
+  Rlogin
+  //RPost
 })
 // const Reducer = (state = [], action) => {
 //   switch (action.type) {
